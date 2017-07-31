@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "766171211413",
+    "firebase_url": "https://colecoestcc.firebaseio.com",
+    "project_id": "colecoestcc",
+    "storage_bucket": "colecoestcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766171211413:android:ad564665dbdd8e93",
+        "android_client_info": {
+          "package_name": "firzen.tcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766171211413-l6s0kg4frcq7uvl0l4dft7hbpm0k1kbg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "firzen.tcc",
+            "certificate_hash": "2ff717eaac0b450b397cdfc27bea7f784bcb2efc"
+          }
+        },
+        {
+          "client_id": "766171211413-8cq4pusfi3a55su8eutku036h6mn6rqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWTp6Yw97fxZAbybHGVegiQDq9L4MjrU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766171211413-8cq4pusfi3a55su8eutku036h6mn6rqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

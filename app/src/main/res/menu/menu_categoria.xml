@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="firzen.tcc.CategoriaListActivity">
+    <item
+        android:id="@+id/editar"
+        app:showAsAction="ifRoom"
+        android:title="Editar" />
+    <item
+        android:id="@+id/remover"
+        app:showAsAction="ifRoom"
+        android:title="Remover" />
+    <item
+        android:id="@+id/cancelar"
+        app:showAsAction="ifRoom"
+        android:title="Cancelar" />
+</menu>
