@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +27,7 @@ public class CategoriaListActivity extends GenericActivity {
     RecyclerView mRecyclerView;
     FloatingActionButton novoButton;
     private CategoriaAdapter adapter;
+    private TextView listEmpty;
     List<Categoria> categorias = new ArrayList<Categoria>();
 
     @Override
@@ -37,6 +39,7 @@ public class CategoriaListActivity extends GenericActivity {
         carregarListView();
         carregarColecoes();
         novoButton = (FloatingActionButton) findViewById(R.id.novo);
+        listEmpty = (TextView) findViewById(R.id.list_empty);
         novoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +67,11 @@ public class CategoriaListActivity extends GenericActivity {
                     categoria.setId(child.getKey());
                     categorias.add(categoria);
                 }
-
+                if(!categorias.isEmpty()){
+                    listEmpty.setVisibility(View.GONE);
+                }else{
+                    listEmpty.setVisibility(View.VISIBLE);
+                }
                 adapter.notifyDataSetChanged();
             }
 

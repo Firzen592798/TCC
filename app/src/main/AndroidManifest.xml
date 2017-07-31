@@ -24,8 +24,7 @@
         android:theme="@style/tema">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:label="@string/app_name" />
         <activity android:name=".CategoriaListActivity" />
         <activity
             android:name=".LoginActivity"

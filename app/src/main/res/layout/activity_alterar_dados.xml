@@ -12,7 +12,11 @@
         tools:context="firzen.tcc.AlterarDadosActivity">
 
         <include layout="@layout/toolbar" />
-
+        <LinearLayout
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
             android:id="@+id/nome"
             android:layout_marginTop="10dp"
@@ -41,6 +45,7 @@
             android:layout_gravity="center"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
+            android:visibility="gone"
             android:layout_width="120dp"
             android:layout_height="180dp"/>
 
@@ -52,6 +57,7 @@
             android:text="Salvar"
             android:onClick="cadastrar">
         </Button>
+        </LinearLayout>
     </LinearLayout>
     <include layout="@layout/drawer_list" />
 </android.support.v4.widget.DrawerLayout>

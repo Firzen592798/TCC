@@ -9,5 +9,5 @@
     android:choiceMode="singleChoice"
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
-    android:background="#ccc"
+    android:background="#f5f5f5"
     tools:showIn="@layout/activity_categoria_list" />

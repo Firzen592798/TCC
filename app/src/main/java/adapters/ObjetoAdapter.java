@@ -121,7 +121,7 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
         }else{
             viewHolder.imageView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.padrao));
         }
-        viewHolder.numItems.setText("Items na coleção: "+objeto.getNumItems());
+        viewHolder.numItems.setText("Último Adquirido: "+objeto.getNumItems());
     }
 
     @Override

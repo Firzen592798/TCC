@@ -42,6 +42,7 @@ public class AlterarDadosActivity extends GenericActivity {
             byte[] imageAsBytes = Base64.decode(usuarioLogado.getFoto(), Base64.DEFAULT);
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
             imageView.setBackground(null);
+            imageView.setVisibility(View.VISIBLE);
         }
     }
     private void dispatchTakePictureIntent() {

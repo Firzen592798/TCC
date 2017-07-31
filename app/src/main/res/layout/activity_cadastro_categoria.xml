@@ -65,7 +65,6 @@
         android:text="Unidade"
         android:hint="Volume, Edição, Capítulo, Número.."
         android:visibility="gone" />
-
     <EditText
         android:id="@+id/editUnit"
         android:layout_width="match_parent"

@@ -4,21 +4,21 @@
     android:layout_width="match_parent"
     android:clickable="true"
     android:layout_height="120dp"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/tw__composer_blue"
     android:orientation="horizontal">
     <!-- The main content view -->
     <ImageView
         android:id="@+id/foto"
-        android:background="@drawable/padrao"
+        android:background="@drawable/usuario"
         android:layout_width="80dp"
         android:layout_height="120dp" />
     <TextView
         android:id="@+id/nome"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="10dp"
-        android:text=""
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="20dp"
+        android:text="asd"
         android:textColor="@color/tw__solid_white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 </LinearLayout>

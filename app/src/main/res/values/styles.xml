@@ -29,6 +29,8 @@
         <item name="android:colorForeground">@color/foreground_material_dark</item>
         <item name="android:textColorSecondary">@color/common_google_signin_btn_text_dark_focused
         </item>
+        <item name="colorAccent">@color/tw__composer_blue</item>
+        <item name="android:textColorSecondaryInverse">@color/colorAccent</item>
     </style>
 
     <style name="tema.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

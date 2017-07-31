@@ -38,11 +38,13 @@ public class CadastroCategoriaActivity extends GenericActivity {
         if(categoria != null){
             editNome.setText(categoria.getDescricao());
             if(categoria.isEnumeravel()) {
+                unidadeTxt.setVisibility(View.VISIBLE);
                 editUnit.setVisibility(View.VISIBLE);
                 editUnit.setText(categoria.getUnidade());
                 radioButtonNao.setChecked(false);
                 radioButtonSim.setChecked(true);
             }else{
+                unidadeTxt.setVisibility(View.GONE);
                 editUnit.setVisibility(View.GONE);
                 radioButtonNao.setChecked(true);
                 radioButtonSim.setChecked(false);

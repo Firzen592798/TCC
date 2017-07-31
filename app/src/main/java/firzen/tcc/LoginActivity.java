@@ -96,6 +96,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setSupportActionBar(myToolbar);
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
+        TextView textView = (TextView) signInButton.getChildAt(0);
+        textView.setText("Entrar com Conta Google");
         signInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -407,6 +409,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == 1) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            Log.w("Status", result.getStatus().toString());
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();

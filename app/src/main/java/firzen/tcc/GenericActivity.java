@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import dao.FirebaseFacade;
 import dominio.Usuario;
 
 /**
@@ -114,7 +115,6 @@ public class GenericActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = null;
-            Toast.makeText(ColecoesApplication.getContext(), "Posicao - "+position, Toast.LENGTH_SHORT).show();
             switch(position) {
                 case 1:
                     intent = new Intent(ColecoesApplication.getContext(), CategoriaListActivity.class);
@@ -144,8 +144,14 @@ public class GenericActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     usuarioLogado = dataSnapshot.getValue(Usuario.class);
+                    if(usuarioLogado == null){
+                        usuarioLogado = new Usuario();
+                        usuarioLogado.setNome("Usuário");
+                        usuarioLogado.setFoto("");
+                        FirebaseFacade.getInstance().atualizarDadosPessoais(usuarioLogado.getNome(), usuarioLogado.getFoto());
+                    }
                     nome.setText(usuarioLogado.getNome());
-                    if (usuarioLogado.getFoto() != null && usuarioLogado.getFoto() != "") {
+                    if (usuarioLogado.getFoto() != null && !usuarioLogado.getFoto().equals("")) {
                         byte[] imageAsBytes = Base64.decode(usuarioLogado.getFoto(), Base64.DEFAULT);
                         foto.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
                         foto.setBackground(null);
@@ -159,7 +165,7 @@ public class GenericActivity extends AppCompatActivity {
             });
         }else{
             nome.setText(usuarioLogado.getNome());
-            if (usuarioLogado.getFoto() != null && usuarioLogado.getFoto() != "") {
+            if (usuarioLogado.getFoto() != null && !usuarioLogado.getFoto().equals("")) {
                 byte[] imageAsBytes = Base64.decode(usuarioLogado.getFoto(), Base64.DEFAULT);
                 foto.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
                 foto.setBackground(null);
@@ -175,7 +181,6 @@ public class GenericActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        Toast.makeText(ColecoesApplication.getContext(), menuItem.getItemId(), Toast.LENGTH_SHORT);
         if (mDrawerToggle.onOptionsItemSelected(menuItem)) {
             return true;
         }

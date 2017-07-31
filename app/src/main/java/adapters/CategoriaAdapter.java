@@ -91,28 +91,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
                     showPopupMenu(imageButtonMenu,getAdapterPosition());
                 }
             });
-
-            /*nome.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Categoria item = mList.get(getAdapterPosition());
-                    Intent intent = new Intent(context, ObjetoListActivity.class);
-                    intent.putExtra("categoria", item);
-                    context.startActivity(intent);
-                }
-            });*/
         }
-
-
-        /*@Override
-        public void onClick(View v) {
-            Context context = itemView.getContext();
-            Categoria item = mList.get(getAdapterPosition());
-            Intent intent = new Intent(context, ObjetoListActivity.class);
-            intent.putExtra("categoria", item);
-            context.startActivity(intent);
-        }*/
     }
 
     private void showPopupMenu(View view,int position) {
@@ -152,15 +131,12 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
                                     Toast.makeText(mContext, "Categoria removida com sucesso", Toast.LENGTH_SHORT);
                                     mList.clear();
                                 }
-
                             })
                             .setNegativeButton("Não", null)
                             .show();
                     break;
                 case R.id.cancelar:
-
                     break;
-
                 default:
                     break;
             }
