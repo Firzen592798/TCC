@@ -54,9 +54,14 @@ public class ObjetoCadastroActivity extends GenericActivity {
         editNumItems= (EditText)findViewById(R.id.editNumItems);
         txtNumItems = (TextView)findViewById(R.id.txtNumItems);
         mImageView = (ImageView) findViewById(imageView);
+        if(savedInstanceState != null) {
+            Bitmap bitmap = savedInstanceState.getParcelable("image");
+            mImageView.setImageBitmap(bitmap);
+        }
         carregarExtras();
 
         editNumItems.setHint("Último item adquirido da sua coleção");
+        if(objeto == null)
         objeto = (Objeto)getIntent().getExtras().get("objeto");
 
         if(objeto != null && objeto.getFoto() != null && objeto.getFoto() != "") {
@@ -176,7 +181,7 @@ public class ObjetoCadastroActivity extends GenericActivity {
             objeto.setFoto(imagemBase64);
             mImageView.setImageBitmap(imageBitmap);
             mImageView.setBackground(null);
+            mImageView.setVisibility(View.VISIBLE);
         }
     }
-
 }

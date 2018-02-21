@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -211,7 +212,7 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
                     mContext.startActivity (intent);
                     break;
                 case R.id.remover:
-                    new AlertDialog.Builder(mContext)
+                    AlertDialog al = new AlertDialog.Builder(mContext)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .setTitle("Excluir Item")
                             .setMessage("Tem certeza que deseja excluir esse item?")
@@ -227,7 +228,8 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
                             })
                             .setNegativeButton("Não", null)
                             .show();
-
+                    al.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                    al.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(Color.BLACK);
                     break;
                 case R.id.cancelar:
 
