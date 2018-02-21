@@ -25,7 +25,7 @@ public class SubListaObjetoActivity extends GenericActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //categorias.clear();
+                //categorias.cleacr();
                 for (DataSnapshot child: dataSnapshot.getChildren()){
                     Categoria categoria = child.getValue(Categoria.class);
                     categoria.setId(child.getKey());

@@ -82,11 +82,12 @@ public class CategoriaListActivity extends GenericActivity {
         });
     }
 
+
+
     @NonNull
     private void carregarListView() {
         mRecyclerView = (RecyclerView)findViewById(R.id.categoriaRecycler);
         mRecyclerView.setHasFixedSize(true);
-
         adapter = new CategoriaAdapter(this, categorias);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

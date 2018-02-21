@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "firzen.tcc"
         minSdkVersion 23
@@ -35,7 +35,8 @@ dependencies {
 
     compile 'com.twitter.sdk.android:twitter-mopub:3.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:23.1.0'
+    //noinspection GradleCompatible
+    compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.twitter.sdk.android:twitter:3.0.0'
     compile 'com.twitter.sdk.android:twitter-core:3.0.0'

@@ -105,50 +105,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void twittar(){
-
-        //Twitter.initialize(this);
-        TwitterConfig config = new TwitterConfig.Builder(this)
-                .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.twitter_consumer_key), getResources().getString(R.string.twitter_consumer_secret)))
-                .debug(true)
-                .build();
-        Twitter.initialize(config);
-        /*TweetComposer.Builder builder = new TweetComposer.Builder(MainActivity.this)
-                .text("just setting up my Twitter Kit.");
-        builder.show();*/
-
-        loginButton.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-
-                TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
-                TwitterAuthToken authToken = session.getAuthToken();
-                String token = authToken.token;
-                String secret = authToken.secret;
-                Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-                TwitterAuthClient authClient = new TwitterAuthClient();
-                authClient.requestEmail(session, new Callback<String>() {
-                    @Override
-                    public void success(Result<String> result) {
-
-                    }
-
-                    @Override
-                    public void failure(TwitterException exception) {
-                        // Do something on failure
-                    }
-                });
-            }
-
-            @Override
-            public void failure(TwitterException exception) {
-                // Do something on failure
-            }
-        });
-
-    }
-
     @Override
     public void onBackPressed() {
         FirebaseAuth.getInstance().signOut();
