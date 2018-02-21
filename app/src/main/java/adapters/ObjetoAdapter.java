@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,6 +41,7 @@ import firzen.tcc.SubListaObjetoActivity;
 public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoViewHolder>{
     private final Context mContext;
     private DatabaseReference mDatabase;
+
     private Categoria categoria;
     List<Objeto> mList = new ArrayList<Objeto>();
 
@@ -97,18 +99,18 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
         if(mList.get(position).getCategoria() != null && mList.get(position).getCategoria().isEnumeravel()){
             String lol = String.valueOf(mList.get(position).getNumItems());
             viewHolder.numItems.setText(lol);
-            viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
+            viewHolder.buttonAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mList.get(position).setNumItems(mList.get(position).getNumItems()+1);
                     int soma = mList.get(position).getNumItems();
                     viewHolder.numItems.setText("Último Adquirido: "+soma);
                     mDatabase.child("usuario/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/categoria/" + categoria.getId() + "/mList").child(mList.get(position).getId()).setValue(mList.get(position));
-
+                    mDatabase.child("objetos/" +  categoria.getId() + "/" +  mList.get(position).getId() + "/numItems").setValue(mList.get(position).getNumItems());
                 }
             });
         }else{
-            viewHolder.imageButton.setVisibility(View.GONE);
+            viewHolder.buttonAdd.setVisibility(View.GONE);
             viewHolder.numItems.setVisibility(View.GONE);
         }
 
@@ -135,13 +137,13 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
     public class ObjetoViewHolder  extends RecyclerView.ViewHolder{
         protected TextView nome;
         protected TextView numItems;
-        protected ImageButton imageButton;
+        protected ImageButton buttonAdd;
         protected ImageView imageView;
         protected ImageButton maisButton;
         protected CardView cardView;
         public ObjetoViewHolder(View itemView) {
             super(itemView);
-            imageButton = (ImageButton) itemView.findViewById(R.id.buttonAdd);
+            buttonAdd = (ImageButton) itemView.findViewById(R.id.buttonAdd);
             maisButton = (ImageButton) itemView.findViewById(R.id.mais);
             nome = (TextView) itemView.findViewById(R.id.nome);
             numItems = (TextView) itemView.findViewById(R.id.textViewNumItems);
@@ -153,10 +155,11 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
                     showPopupMenu(v, getAdapterPosition());
                 }
             });
-            imageButton.setOnClickListener(new View.OnClickListener() {
+            buttonAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mList.get(getAdapterPosition()).setNumItems(mList.get(getAdapterPosition()).getNumItems()+1);
+                    Log.w("Items", String.valueOf(mList.get(getAdapterPosition()).getNumItems()));
                     numItems.setText("Items na coleção: "+String.valueOf(mList.get(getAdapterPosition()).getNumItems()));
                     FirebaseFacade.getInstance().salvarObjeto(mList.get(getAdapterPosition()), mList.get(getAdapterPosition()).getCategoria());
                     //mDatabase.child("usuario/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/categoria/" + categoria.getId() + "/mList").child(mList.get(getAdapterPosition()).getId()).setValue(mList.get(getAdapterPosition()));
@@ -235,6 +238,22 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
             }
             return false;
         }
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public List<Objeto> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<Objeto> mList) {
+        this.mList = mList;
     }
 
 }

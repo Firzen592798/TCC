@@ -39,14 +39,14 @@ public class FirebaseFacade {
     }
 
     public void salvarObjeto(Objeto objeto, Categoria categoria){
-        if(objeto.getId() == null) {
-            String key = mDatabase.child("objetos/"+categoria.getId()).push().getKey();
-            objeto.setId(key);
-            categoria.setCount(categoria.getCount()+1);
-            mDatabase.child("usuario/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/categoria").child(categoria.getId()).child("count").setValue(categoria.getCount());
-        }else{
+        //if(objeto.getId() == null) {
+        String key = mDatabase.child("objetos/"+categoria.getId()).push().getKey();
+        objeto.setId(key);
+        categoria.setCount(categoria.getCount()+1);
+        mDatabase.child("usuario/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/categoria").child(categoria.getId()).child("count").setValue(categoria.getCount());
+        /*}else{
             objeto.removeAllAfter(objeto.getNumItems());
-        }
+        }*/
         mDatabase.child("objetos/"+categoria.getId()+"/"+objeto.getId()).setValue(objeto);
     }
 

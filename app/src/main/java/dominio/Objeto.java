@@ -88,6 +88,7 @@ public class Objeto implements Serializable {
                 if (Integer.valueOf(s) <= tamanho) {
                     if (!first) {
                         builder.append(",");
+                        builder.append(s);
                     } else {
                         builder.append(s);
                         first = false;
